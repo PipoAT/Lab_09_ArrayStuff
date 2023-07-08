@@ -73,5 +73,37 @@ public class Main {
         } else {
             System.out.println("The value " + secondUserValue + " was not found in the dataPoints array.");
         }
+
+        // Step 2D Code loop that determines the max and min of the array and display to user
+        int max = dataPoints[0]; // assume that max and min are the first value of array
+        int min = dataPoints[0]; // initially until loop runs
+        for (int n = 0; n < dataPoints.length; n++) {
+            if (dataPoints[n] < min) {
+                min = dataPoints[n]; // if the next value is less than min, set new min
+            }
+            if (dataPoints[n] > max) {
+                max = dataPoints[n]; // if next value is larger than max, set new max
+            }
+        }
+
+        // output results
+        System.out.println("The minimum value in the dataPoints array is: " + min);
+        System.out.println("The maximum value in the dataPoints array is: " + max);
+
+        // Step 2E create getAverage method to return average of array
+        // output results
+        double average = getAverage(dataPoints);
+        System.out.println("Average of dataPoints is: " + average);
+
     }
+
+    public static double getAverage(int[] values)
+    {
+        int sum = 0; // initialize sum for array values
+        for (int v = 0; v < values.length; v++) {
+            sum += values[v]; // like above, add each array value to sum
+        }
+        return (double) sum / values.length; // return the average via calculation
+    }
+
 }
