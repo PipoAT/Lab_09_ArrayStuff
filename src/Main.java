@@ -1,4 +1,5 @@
 import java.util.Random; // import random for use with array
+import java.util.Scanner; // import scanner for user input
 
 public class Main {
     public static void main(String[] args) {
@@ -33,5 +34,44 @@ public class Main {
         System.out.println("The sum of the values in dataPoints is: " + sumOfArrayValues);
         System.out.println("The average of the values in dataPoints is: " + averageOfArrayValues);
 
+
+        // Step 2A Add user prompt for int between 1 and 100
+        Scanner in = new Scanner(System.in); // initialize scanner for user input
+        int userValue = SafeInput.getRangedInt(in, "Please enter a value between 1 and 100: ",1, 100);
+
+        // Step 2B Iterate through array and add count of number
+        // of occurrences the userValue is in array.
+        int countOfUserValue = 0; // initialize counter
+        for (int l = 0; l < dataPoints.length; l++) {
+            if (dataPoints[l] == userValue) {
+                countOfUserValue++; // add 1 to counter for each occurrence
+            }
+        }
+
+        // output results
+        System.out.println("The value " + userValue + " was found " + countOfUserValue + " times in the dataPoints array.");
+
+        // Step 2C Prompt for second user input of same parameters
+        // iterate through array and on first instance of input being found
+        // break loop and display position
+
+        int secondUserValue = SafeInput.getRangedInt(in, "Please enter another value between 1 and 100: ",1, 100);
+
+        int position = -1; // initialize position
+        for (int m = 0; m < dataPoints.length; m++) {
+            // check for the first time the value matches
+            if (dataPoints[m] == secondUserValue) {
+                // set position and break loop
+                position = m;
+                break;
+            }
+        }
+
+        // output results
+        if (position != -1) {
+            System.out.println("The value " + secondUserValue + " was found at array index " + position + ".");
+        } else {
+            System.out.println("The value " + secondUserValue + " was not found in the dataPoints array.");
+        }
     }
 }
